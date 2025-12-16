@@ -235,3 +235,20 @@ function removeItem(key){
 	localStorage.setItem('cart', JSON.stringify(cart)); // upload saved Cart
 	renderCart();
 }
+//Change quantity using the symbols function 
+function changeQuantity(key, delta){
+	//Load cart from our localstorage or start with an empty array
+	let cart = JSON.parse(localStorage.getItem('cart')) || [];
+	const index = cart.findIndex(item=> item.key == key);
+	//Identify which button was clicked and modify quantity
+	if (index !== -1){
+		cart[index].quantity += delta;
+	//If we drop the quantity to 0, remove the ITEM
+	if (cart[index].quantity <=0){
+		cart.splice(index, 1);
+	}
+	//Update Cart
+	localStorage.setItem('cart', JSON.stringify(cart));
+	renderCart();
+	}
+}
