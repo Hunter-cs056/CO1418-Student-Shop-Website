@@ -201,4 +201,21 @@ footer .container .links  a{
 	   font-weight:bold;
 	   padding:0.5em;
    }
-   
+   /* Back to top button */
+   .back-to-top{
+	   position:fixed;
+	   bottom:15em;
+	   right:9em;
+	   display:none; 
+	   border:none;
+	   border-radius:2em;
+	   color:white;
+	   background-color:#BE1622;
+	   padding:10px 15px;'
+	   cursor:pointer;
+	   z-index:1000;
+	   transition: opacity 0.3s ease;
+   }
+   .back-to-top:hover{
+	   background-color:darkred;
+   }
