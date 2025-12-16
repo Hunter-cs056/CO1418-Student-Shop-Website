@@ -151,3 +151,53 @@ const cartTotal = document.getElementById('cart-total')
 		return sum + price * item.quantity;
 	}, 0);
 	}
+function renderCart(){
+	//Load cart from our localstorage or start with an empty array
+	const cart = JSON.parse(localStorage.getItem('cart')) || [];
+	//If its empty show message , clear items and exit the function
+	if(cart.length ==0){
+		cartContainer.innerHTML='';
+		emptyCartMsg.style.display='block';
+		cartTotal.innerHTML= '';
+		return;
+	}
+	//If not empty hide the empty Message
+	emptyCartMsg.style.display ='none';
+	cartContainer.innerHTML= '';
+	
+	//Loop through each item in the CART
+	cart.forEach(item => 
+	{	
+		//Create a row for the product and give it a class name
+		const row= document.createElement('div');
+		row.className= 'cart-row'
+		
+		//Load inside each row
+		row.innerHTML=`
+		<div class="cart-cell">
+			<img src="${item.imgSrc}" alt="${item.name} - ${item.color}" class="cart-image">
+		</div>
+		<div class="cart-cell">
+			<span>${item.name} - ${item.color}</span>
+			<br>
+			<a href="item.html" class="view-button" onclick="sessionStorage.setItem('selectedProduct', ${item.index})">View More</a>
+		</div>
+		<div class="cart-cell">
+			<span>${item.price}</span>
+		</div>
+		<div class="cart-cell">
+			<button class="qty-btn" onclick="changeQuantity('${item.key}',-1)">-</button>
+			<input type="number" id="qty-input" class="qty-input" min="1" value="${item.quantity}" onchange="setQuantity('${item.key}', this.value)">
+			<button class="qty-btn" onclick="changeQuantity('${item.key}', 1)">+</button>
+		</div>
+		<div class="cart-cell">
+			<button class="remove-btn" onclick="removeItem('${item.key}')">Remove</button>
+		</div>
+		`;
+		cartContainer.appendChild(row);
+	});
+
+	//Display Total
+	const total= calculateTotal(cart); 
+	cartTotal.innerHTML = `<strong>Total: £${total.toFixed(2)} </strong>`;
+}
