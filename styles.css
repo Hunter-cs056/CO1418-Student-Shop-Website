@@ -256,3 +256,94 @@ footer .container .links  a{
 	  padding:0.6em 1.2em;
 	  font-size:1em;
   }
+ /* ========================================
+    CART PAGE
+   ======================================== */
+   /* Header and footer are already styled so now we need to just style the content section */  
+   /* Our cart header */
+
+.cart-header,
+.cart-row {
+	max-width:800px;
+	margin: 0 auto;
+	display: grid;
+	grid-template-columns: 10em 10em 10em 10em 1em;
+	gap:0em;
+	align-items:center;
+	padding: 0.5em 0;
+}
+.cart-header{
+	text-align:center;
+	font-weight:bold;
+	border-bottom:2px solid lightgray;
+	
+}
+/* Our cart body */
+.cart-cell{
+	text-align: center;
+	font-weight:bold;
+}
+.cart-image{
+	width:5em;
+	height:auto;
+}
+.remove-btn{
+	background-color:#BE1622;
+	color:white;
+	border:none;
+	border-radius:2em;
+	padding:0.3em;
+	cursor:pointer;
+}
+#empty-cart{
+	text-align:center;
+	font-weight:bold;
+	padding:1em;
+}
+
+.qty-btn{
+	padding:0.2em 0.3em;
+	font-weight:bold;
+	cursor:pointer;
+	font-size: 0.9em;
+	
+}
+.qty-input{
+	width:4em;
+	text-align:center;
+	font-weight:bold;
+	margin:0 0.2em;
+	padding:0.5em;
+}
+/* Our Cart footer */
+.cart-footer{
+	display:flex;
+	justify-content: flex-end;
+	max-width: 800px;
+	margin: 0 auto;
+	border-top:1px solid lightgray;
+	gap:1em;
+}
+#code-input{
+		padding:0.4em;
+		border:1px solid black;
+}
+#discount-button{
+	padding:0.3em;
+	border-radius:0.4em;
+	cursor:pointer;
+	border:none;
+	background-color:#339933;
+	color:white;
+	font-weight:bold;
+}
+#empty-cart-buttton{
+	border-radius:0.3em;
+	background-color:#BE1622;
+	cursor:pointer;
+	color:white;
+	border:none;
+	padding:0.3em;
+	margin-right:auto;
+	margin-top:0.2em;
+}
