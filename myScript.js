@@ -226,3 +226,12 @@ function emptyCart(){
 	localStorage.removeItem('cart');
 	renderCart();
 }
+
+//Function to an item regardless of quantity
+function removeItem(key){
+	//Load cart from our localstorage or start with an empty array
+	let cart = JSON.parse(localStorage.getItem('cart')) || [];
+	cart= cart.filter(item=> item.key !== key); //remove the selected item 
+	localStorage.setItem('cart', JSON.stringify(cart)); // upload saved Cart
+	renderCart();
+}
