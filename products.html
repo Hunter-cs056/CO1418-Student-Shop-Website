@@ -30,6 +30,22 @@
 			
         </div>
     </nav>
+	<!-- Content -->
+	<div class="filter-bar">
+		<label for="stock-filter">Filter by stock:</label>
+		<select id="stock-filter">
+			<option value="all">All</option>
+			<option value="good-stock">Good stock</option>
+			<option value="last-few">Last few</option>
+			<option value="out-of-stock">Out of stock</option>
+		</select>	
+	</div>
+	<div class="product-content">
+			<div id="product-list"  class="product-container"></div>
+	</div>	
+	<!-- Back to top button -->
+	<button id="back-to-top" class="back-to-top">↑ Back to top</button>
+	
 	<script src="myScript.js"></script>
 </body>
 </html>
