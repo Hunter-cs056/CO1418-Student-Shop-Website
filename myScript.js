@@ -19,3 +19,64 @@ const tshirts = [
 ['Legacy T-Shirt','Grey','£7.99','good-stock','images/tshirts/tshirt8.jpg','Perfect for those graduating this year. Get a bargain whilst we have the stock.'],
 ['Legacy T-Shirt','Burgundy','£7.99','last-few','images/tshirts/tshirt9.jpg','Limited stock. Grab these nostalgic items before they make their way onto eBay.'],
 ];
+/* ========================================
+    PRODUCT PAGE
+   ======================================== */
+const productList= document.getElementById('product-list');
+const stockFilter= document.getElementById('stock-filter');
+if(productList){
+//Render products based on filter
+function renderProducts(filter){
+productList.innerHTML=' ';
+
+//Then we wil loop through the items and give each a div and a class
+tshirts.forEach(([name,color,price,stock,imgSrc,desc],index)=>{
+if(filter!=='all' && stock !== filter)return;
+const card = document.createElement('div');
+card.className='product-itself';
+
+//Apply styles using a template litteral
+card.innerHTML=`
+<img src = "${imgSrc}" alt= "${name} - ${color}">
+<h3>${name} - ${color}</h3>
+<p>${desc}</p>
+<p><strong>${price}</strong></p>
+<p class="stock-status ${stock}">${stock.replace(/-/g, ' ')}</p>
+<a href="item.html" class= "view-button" onclick="sessionStorage.setItem('selectedProduct', ${index})">View More</a>
+${stock !== 'out-of-stock' ?
+`<button class ="product-page-button"onclick="addToCart(${index})">Add to Cart</button>` : ''}
+`;
+
+productList.appendChild(card)
+});
+}
+//Initial load Show all
+renderProducts('all');
+
+//Add eventListener for changes
+if(stockFilter){
+stockFilter.addEventListener('change', (e) =>
+{renderProducts(e.target.value);
+});
+}
+}
+
+//Lets add a back to top button functionality
+const backToTopBtn= document.getElementById('back-to-top');
+document.addEventListener('DOMContentLoaded', ()=>{
+if(backToTopBtn){
+//Initialy hide the button and show only on certain page height
+window.addEventListener('scroll', ()=>{
+	if(window.scrollY>=200){
+		backToTopBtn.style.display = 'block';
+	}
+	else{
+		backToTopBtn.style.display="none";
+	}
+});
+//When the button is clicked we scroll to top
+backToTopBtn.addEventListener('click', ()=>{
+	window.scrollTo({top:0, behavior: 'smooth'})
+});
+	}
+});
