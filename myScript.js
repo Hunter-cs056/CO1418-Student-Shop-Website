@@ -80,3 +80,31 @@ backToTopBtn.addEventListener('click', ()=>{
 });
 	}
 });
+/* ========================================
+    ITEM PAGE
+   ======================================== */
+//Use the saved index
+const selectedIndex = sessionStorage.getItem('selectedProduct');
+
+//Use the container
+const detailContainer = document.getElementById('product-detail');
+if(detailContainer){
+	if(selectedIndex !== null){
+	//Destructure product data
+	const[name,color,price,stock,imgSrc,desc] = tshirts[selectedIndex];
+	//Load the Product 
+	detailContainer.innerHTML=`
+	<div class="product-detail-card">
+	<img src="${imgSrc}" alt="${name} - ${color}">
+	<h2>${name} - ${color}</h2>
+	<p>${desc}</p>
+	<p><strong>${price}</strong></p>
+	<p class="stock-status ${stock}"> ${stock.replace(/-/g, ' ')}</p>
+	${stock !== 'out-of-stock' ?
+	`<button onclick="addToCart(${selectedIndex})">Add to Cart</button>` : '' }
+	</div>
+	`;
+	}
+	else	{
+	detailContainer.innerHTML = '<p> No product selected</p>';
+	}}
