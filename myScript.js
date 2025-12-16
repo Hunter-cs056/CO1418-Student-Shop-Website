@@ -201,3 +201,22 @@ function renderCart(){
 	const total= calculateTotal(cart); 
 	cartTotal.innerHTML = `<strong>Total: £${total.toFixed(2)} </strong>`;
 }
+
+//Create a discount code function that runs when the Apply button is clicked
+function applyCode(){
+	//Access the user input value and remove any extra spaces
+	const code =document.getElementById('code-input').value.trim();
+	//Load cart from our localstorage or start with an empty array
+	const cart = JSON.parse(localStorage.getItem('cart')) || [];
+	const total = calculateTotal(cart);
+	//Check if the user input matches in order to apply disount
+	if(code == "SAVE10"){
+		const discountedTotal =total*0.9;
+		cartTotal.innerHTML=`<strong>Discounted Total: £${discountedTotal.toFixed(2)}</strong>`;
+	}
+	//If the input does not match we display an alert
+	else{
+		alert("Invalid code ( reminder the code is: SAVE10 )");
+		cartTotal.innerHTML=`<strong>Total: £${total.toFixed(2)}</strong>`;
+	}
+}
