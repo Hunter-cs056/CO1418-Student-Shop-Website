@@ -108,3 +108,29 @@ if(detailContainer){
 	else	{
 	detailContainer.innerHTML = '<p> No product selected</p>';
 	}}
+/* ========================================
+    ADD TO CART BUTTON'S FUNCTION
+   ======================================== */
+function addToCart(index){
+	//Access the product data from the array
+	const[name,color,price,stock,imgSrc,desc]=tshirts[index];
+	//Load cart from our localstorage or start with an empty array
+	const cart = JSON.parse(localStorage.getItem('cart')) || [];
+	//Create a unique key to hold the product's  name + color combo
+	const key=`${name}-${color}`;
+	//Search our cart for the recently added product(return-1 if not found or the number otherwise)
+	const existingIndex = cart.findIndex(item => item.key === key);
+	//Now check if it already exist and increase its quantity
+	if(existingIndex !== -1){
+		cart[existingIndex].quantity += 1;
+	}
+	//Now if the product does not exist, we add it with quantity 1
+	else {
+		const item = {key, index, name, color, price, stock, imgSrc, desc, quantity:1};
+		cart.push(item);
+	}
+	//Save the updated cart to localstorage
+	localStorage.setItem('cart',JSON.stringify(cart));
+	//Create alert box
+	alert(`${name} - ${color} has been added to your Cart!`);
+}
