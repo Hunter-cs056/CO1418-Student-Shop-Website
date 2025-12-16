@@ -220,3 +220,9 @@ function applyCode(){
 		cartTotal.innerHTML=`<strong>Total: £${total.toFixed(2)}</strong>`;
 	}
 }
+
+//Function that runs when the empty cart button is pressed
+function emptyCart(){
+	localStorage.removeItem('cart');
+	renderCart();
+}
