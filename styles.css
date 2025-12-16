@@ -108,3 +108,25 @@ video{
 	height:100%;
 	border:0;
 }
+  /*Footer Section*/
+ 
+footer .container{
+	display:flex;
+	justify-content: center;
+	align-items:flex-start;
+	margin-top:1em;
+	padding:2em;
+	gap:3em;
+	background-color:#34516C;
+	color:white;
+	
+}
+footer .container .links{ 
+	text-align:left;
+   }
+footer .container .links  a{ 
+	color:white;
+	text-decoration:none;
+   }
+   
+   
