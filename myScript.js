@@ -134,3 +134,20 @@ function addToCart(index){
 	//Create alert box
 	alert(`${name} - ${color} has been added to your Cart!`);
 }
+/* ========================================
+   CART PAGE(DISPLAY CART ITEMS)
+   ======================================== */
+//Access the html containers 
+const cartContainer = document.getElementById('cart-items');
+const emptyCartMsg= document.getElementById('empty-cart');
+const cartTotal = document.getElementById('cart-total')
+
+// CALCULATING AND DISPLAYING TOTAL
+//Calculate
+	function calculateTotal(cart){
+	return cart.reduce((sum, item) => {
+		//Here we remove the currency symbol and convert to number type
+		const price= parseFloat(item.price.replace(/[^\d.]/g, ''));
+		return sum + price * item.quantity;
+	}, 0);
+	}
