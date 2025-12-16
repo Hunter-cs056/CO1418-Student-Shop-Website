@@ -252,3 +252,26 @@ function changeQuantity(key, delta){
 	renderCart();
 	}
 }
+//Change quantity by providing an input
+function setQuantity(key, newQty){
+	//Load cart from our localstorage or start  with an empty array
+	let cart = JSON.parse(localStorage.getItem('cart')) || [];
+	const index= cart.findIndex(item=> item.key == key);
+	
+
+	if(index !==-1){
+		let qty = parseInt(newQty, 10);
+		
+		// if the input is not valid reset to previous value
+		if(isNaN(qty) || qty < 1){
+			renderCart();
+			return
+		}
+		//Update our cart with valid quantity
+		cart[index].quantity = qty;
+		localStorage.setItem('cart' , JSON.stringify(cart));
+		renderCart();
+	}
+}
+//	Initial Render
+	renderCart();
