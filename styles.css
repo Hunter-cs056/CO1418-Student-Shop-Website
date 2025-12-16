@@ -23,3 +23,38 @@ footer{
 	margin-top:auto;
 	z-index:0;
 }
+  /* Navigation Bar Section  */
+
+.navbar{
+	background:#BE1622;
+	color:white;
+}
+.navbar .container{
+	display:flex;
+	justify-content: space-between;
+	align-items:center;
+	padding:1em;
+}
+.left-side{
+	display:flex;
+	align-items:center;
+	gap:1em;
+}
+.right-side{
+	display:flex;
+	align-items:center;
+	gap:1em;
+}
+.logo img{
+	width: 10em;
+	height:auto;
+}
+.nav-menu{
+	list-style:none;
+	display:flex;
+	gap: 1em;
+}
+.nav-menu li a{
+	color:white;
+	text-decoration:none;
+}
